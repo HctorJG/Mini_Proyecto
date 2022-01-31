@@ -1,0 +1,65 @@
+1. Lo primero que se necesita para jugar son cartas, por lo que crearemos una clase llamado 'Cartas'.
+  1.1 Se crea una funcion __init__ que contendra los atributos de la carta: nombre, valor, palo, simbolo
+    1.1.1 Se añade un atributo que llamaremos "oculto" para que las cartas esten boca abajo y asi no se puedan ver 
+  1.2 Se crea una funcion __repr__ el cual representara los atributos de la carta del proceso anterior
+    1.2.1 Regresa el valor y el simbolo del palo de la carta, las cuales estaran ocultas
+
+2. Se crea una clase llamado 'Mazo'
+  2.1 Se necesita una funcion (shuffle) que barajee por lo menos una vez nuestra baraja.
+  2.2 Se crea una funcion que vaya repartiendo las cartas (funcion pop).
+
+3. Se crea una clase llamado 'Baraja Estandar' el cual traera a la clase 'Baraja' ya barajeada.
+  3.1 Se crea una funcion __init__ que contendra los atributos de la baraja:
+    3.1.1 Se crea un diccionario vacio que contenga a las cartas aque armaremos mas abajo
+    3.1.2 Lista con los distintos palos: corazones, diamantes, picas, treboles
+    3.1.3 Diccionario que contenga los valores de las cartas con sus respectivos nombres: [del 2 al 14 juntando la Jota con el 11, la Reina con el 12, el Rey con el 13 y el As con el 14]
+    3.1.4 Se hacen ciclos 'for' para ir añadiendo las llaves y los valores del diccionario a cada carta dentro de nuestra lista vacia(2.1.1)
+      3.1.4.1 Para los valores que van del 2 al 10, se le agrega el nombre del valor ('Two', 'Three' etc.) con el simbolo del palo correspondiente
+      3.1.4.2 Para los valores mayores o iguales a 11, solo se usa la primera letra del nombre del valor de la carta ('Q' para Reina, 'A' para as, etc.) y se le agrega al simbolo del palo correspondiente
+  3.2 Se crea una funcion __repr__ que nos regresara el numero de cartas que queden despues de cada reparticion
+
+4. Se crea una clase llamado 'Jugador'
+  4.1 Traemos la funcion __init__ para traer el atributo "cartas" con las cuales se jugara
+  4.2 Crear una funcion que te permita 'contar' las cartas en tu mano
+  4.3 Una funcion que añada cartas a la mano del jugador
+  
+5. Crear una clase que anote la 'Puntuacion'
+  5.1 Se crea una funcion __init__ que me regrese error si no cuento con una mano de 5 cartas
+  5.2 Funcion Color:
+    5.2.1 Se usa un set que nos permita contar 5 palos iguales dentro de nuestra mano
+  5.3 Funcion Escalera:
+    5.3.1 Si no se tiene un set con 5 valores distintos, regresa un 'false'
+    5.3.2 Si se tiene un as(14) seguido de un 2, 3, 4 y 5, regresa 'true'
+    5.3.3 Si no se tienen 5 cartas consecutivas, regresa 'false'
+  5.4 Funcion Carta Alta:
+    5.4.1 Para carta dentro de cartas, no se tiene ninguna otra combinacion (None), trae 'Carta Alta'
+    5.4.2 Si el valor de 'Carta Alta' es mayor a los demas valores de las otras cartas, regresara la funcion 'Carta Alta'
+  5.5 Funcion Conteo_mas_alto:
+    5.5.1 Es un contador que trae la cantidad de veces que se repite un valor dentro de nuestra mano. Sirve para programar la tercia.
+  5.6 Funcion Dos Pares:
+    5.6.1 Para valor en valores, si se tiene un par de cartas con el mismo valor y a su vez no se encuentran ya almacenadas en la lista pares, nos regresa la funcion
+  5.7 Funcion Cuartilla:
+    5.7.1 Si se tiene cuatro cartas del mismo valor regresa 'True'
+  5.8 Funcion Casa_Llena:
+    5.8.1 Si tengo dos valores iguales y 3 valores iguales, regresa 'True'
+  5.9 Crea una funcion que lleve la 'Dinamica del juego'
+    5.9.1 La variable 'Player' me trae una mano de 5 cartas ya barajeada
+    5.9.2 Monto inicial: Puntaje con el que empieza el jugador en cada juego
+    5.9.3 Costo por mano: Cada mano cuesta 5 puntos
+    5.9.4 Barajear: Se llama al mazo con las cartas restantes, se barajean y se entregan al jugador en cada turno
+    5.9.5 Repartir: Una vez que se barajea el mazo y se reparten cartas a la mano del jugador
+    5.9.6 Haz las cartas visibles: Debido a que las cartas se encuentran boca abajo, se crea un ciclo 'for' que las muestre 
+    5.9.7 Puntaje: 
+      5.9.7.1 Si tengo una escalera con un as mas un color, tengo una 'Flor Imperial' y me da 2000 pts.
+      5.9.7.2 Una escalera de color equivale a 250 pts
+      5.9.7.3 Un poquer (cuartilla) vale 125 pts
+      5.9.7.4 Un Full (Casa_Llena) vale 40 pts
+      5.9.7.5 Un color vale 25 pts
+      5.9.7.6 Una escalera vale 20 pts
+      5.9.7.7 Una tercia vale 15 pts (aqui se usa la funcion de Conteo_mas_alto)
+      5.9.7.8 Un doble par vale 10 pts
+      5.9.8.9 Un par vale 5 pts
+
+  
+
+  
